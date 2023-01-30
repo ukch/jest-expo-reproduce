@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React, { useRef, useState } from 'react';
+import * as Notifications from 'expo-notifications';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -28,6 +29,16 @@ const App = () => {
   const [whatsNextYCoord, setWhatsNextYCoord] = useState<number>(0);
   const scrollViewRef = useRef<null | ScrollView>(null);
 
+  useEffect(() => {
+    Notifications.getExpoPushTokenAsync().then((res) => setPushtoken(res.data));
+    const notificationListener =
+      Notifications.addNotificationResponseReceivedListener(() => {
+        //we can get notification content
+      });
+    return () => {
+      notificationListener.remove();
+    };
+  }, []);
   return (
     <>
       <StatusBar barStyle="dark-content" />
