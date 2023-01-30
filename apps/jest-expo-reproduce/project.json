@@ -98,7 +98,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/jest-expo-reproduce"],
+      "outputs": ["{workspaceRoot}/coverage/apps/jest-expo-reproduce"],
       "options": {
         "jestConfig": "apps/jest-expo-reproduce/jest.config.ts",
         "passWithNoTests": true
