@@ -86,8 +86,10 @@
       "options": {}
     },
     "eject": {
-      "executor": "@nrwl/expo:eject",
-      "options": {}
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx prebuild jest-expo-reproduce"
+      }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -98,10 +100,35 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/jest-expo-reproduce"],
+      "outputs": ["{workspaceRoot}/coverage/apps/jest-expo-reproduce"],
       "options": {
         "jestConfig": "apps/jest-expo-reproduce/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "prebuild": {
+      "executor": "@nrwl/expo:prebuild",
+      "options": {}
+    },
+    "install": {
+      "executor": "@nrwl/expo:install",
+      "options": {}
+    },
+    "update": {
+      "executor": "@nrwl/expo:update",
+      "options": {}
+    },
+    "export": {
+      "executor": "@nrwl/expo:export",
+      "options": {
+        "platform": "all",
+        "outputDir": "../../dist/apps/jest-expo-reproduce"
+      }
+    },
+    "export-web": {
+      "executor": "@nrwl/expo:export",
+      "options": {
+        "bundler": "webpack"
       }
     }
   },
